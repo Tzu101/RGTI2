@@ -221,6 +221,8 @@ public class Frog : MonoBehaviour {
         // Jump
         if (Input.GetKeyDown(KeyCode.W)) {
 
+            EntityManager.AudioManager.playJump();
+
             int futureX = this.gridPositionX + (int)this.jumpDirectionX;
             int futureZ = this.gridPositionZ + (int)this.jumpDirectionZ;
 

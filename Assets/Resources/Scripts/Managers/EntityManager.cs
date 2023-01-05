@@ -15,8 +15,14 @@ public class EntityManager : MonoBehaviour {
     private static GameObject[,] fireflies;
 
     public static Vector3 lilypadCenter = new Vector3(0, 0, 0);
+
+    public static AudioManager AudioManager;
         
     void Awake() {
+        EntityManager.AudioManager = (AudioManager) GameObject.Find("AudioManager").GetComponent<AudioManager>();
+
+        EntityManager.AudioManager.playFly();
+
         lilypadCenter = new Vector3(0, 0, 0);
 
         EntityManager.frog = Resources.Load("Prefabs/Frog") as GameObject;
@@ -52,11 +58,15 @@ public class EntityManager : MonoBehaviour {
 
     public static void updateFirefly(int posX, int posZ) {
         if (EntityManager.fireflies[posX, posZ].name == "FireflyQueen(Clone)") {
-           // Nothing
+           Level.completed[LevelManager.currentLevel.id] = '1';
+           Level.updateCompleted();
+           LevelManager.currentLevel = null;
+           SceneManager.LoadScene("Title");
         }
         if (EntityManager.fireflies[posX, posZ]) {
             Object.Destroy(EntityManager.fireflies[posX, posZ]);
             EntityManager.fireflies[posX, posZ] = null;
+            EntityManager.AudioManager.playCrunch();
         }
     }
 
