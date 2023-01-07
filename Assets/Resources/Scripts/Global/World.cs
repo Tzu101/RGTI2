@@ -20,6 +20,11 @@ public class World {
         return World.lilypads[posX, posZ] > 0;
     }
 
+    public static int lilypadType(int posX, int posZ) {
+
+        return World.lilypads[posX, posZ];
+    }
+
     public static bool hasFirefly(int posX, int posZ) {
 
         if (posX < 0 || posX >= World.width || posZ < 0 || posZ >= World.height) {

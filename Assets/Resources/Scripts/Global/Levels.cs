@@ -43,8 +43,8 @@ public class Levels {
         3, 3,
         new Vector2(0, 0),
         new int[,] { 
-            { 2, 2, 1 },
-            { 2, 2, 0 },
+            { 2, 3, 1 },
+            { 3, 3, 0 },
             { 1, 0, 0 },
         },
         new int[,] { 

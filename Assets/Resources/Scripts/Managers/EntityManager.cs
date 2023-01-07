@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 public class EntityManager : MonoBehaviour {
 
     private static GameObject frog;
-    private static GameObject lilypad;
+    private static GameObject lilypadFlower;
+    private static GameObject lilypadGreen;
+    private static GameObject lilypadOrange;
+    private static GameObject lilypadRed;
     private static GameObject firefly;
     private static GameObject fireflyQueen;
 
@@ -26,7 +29,10 @@ public class EntityManager : MonoBehaviour {
         lilypadCenter = new Vector3(0, 0, 0);
 
         EntityManager.frog = Resources.Load("Prefabs/Frog") as GameObject;
-        EntityManager.lilypad = Resources.Load("Prefabs/Lilypad") as GameObject;
+        EntityManager.lilypadFlower = Resources.Load("Prefabs/LilypadFlower") as GameObject;
+        EntityManager.lilypadGreen = Resources.Load("Prefabs/LilypadGreen") as GameObject;
+        EntityManager.lilypadOrange = Resources.Load("Prefabs/LilypadOrange") as GameObject;
+        EntityManager.lilypadRed = Resources.Load("Prefabs/LilypadRed") as GameObject;
         EntityManager.firefly = Resources.Load("Prefabs/Firefly") as GameObject;
         EntityManager.fireflyQueen = Resources.Load("Prefabs/FireflyQueen") as GameObject;
 
@@ -42,7 +48,20 @@ public class EntityManager : MonoBehaviour {
                     lilypadCount++;
                     Vector3 lilypadPosition = new Vector3(x, 0, z);
                     EntityManager.lilypadCenter += lilypadPosition;
-                    EntityManager.lilypads[x, z] = Instantiate(EntityManager.lilypad, lilypadPosition * World.gridToUnit, Quaternion.identity);
+
+                    GameObject lilypad = EntityManager.lilypadGreen;
+
+                    switch (World.lilypadType(x, z)) {
+                        case 1:
+                            lilypad = EntityManager.lilypadRed;
+                            break;
+
+                        case 2:
+                            lilypad = EntityManager.lilypadOrange;
+                            break;
+                    }
+
+                    EntityManager.lilypads[x, z] = Instantiate(lilypad, lilypadPosition * World.gridToUnit, Quaternion.identity);
                 }
 
                 if (World.hasFireflyQueen(x, z)) {
@@ -54,6 +73,16 @@ public class EntityManager : MonoBehaviour {
             }
         }
         EntityManager.lilypadCenter /= lilypadCount;
+
+        for (int i = 0; i < World.width*World.height; i++) {
+
+            int posX = Random.Range(-World.width / 2 - 3, World.width + World.width / 2 + 3);
+            int posZ = Random.Range(-World.height / 2 - 3, World.height + World.height / 2 + 3);
+
+            if ((posX < -1 || posX > World.width) && (posZ < -1 || posZ > World.height)) {
+                Instantiate(EntityManager.lilypadFlower, new Vector3(posX, 0, posZ) * World.gridToUnit, Quaternion.identity);
+            }
+        }
     }
 
     public static void updateFirefly(int posX, int posZ) {
@@ -71,6 +100,17 @@ public class EntityManager : MonoBehaviour {
     }
 
     public static void updateLilypad(int posX, int posZ) {
+
+        if (EntityManager.lilypads[posX, posZ] && World.lilypads[posX, posZ] == 2) {
+            Object.Destroy(EntityManager.lilypads[posX, posZ]);
+            EntityManager.lilypads[posX, posZ] = Instantiate(EntityManager.lilypadOrange, new Vector3(posX, 0, posZ) * World.gridToUnit, Quaternion.identity);
+        }
+
+        if (EntityManager.lilypads[posX, posZ] && World.lilypads[posX, posZ] == 1) {
+            Object.Destroy(EntityManager.lilypads[posX, posZ]);
+            EntityManager.lilypads[posX, posZ] = Instantiate(EntityManager.lilypadRed, new Vector3(posX, 0, posZ) * World.gridToUnit, Quaternion.identity);
+        }
+
         if (EntityManager.lilypads[posX, posZ] && World.lilypads[posX, posZ] <= 0) {
             Object.Destroy(EntityManager.lilypads[posX, posZ]);
             EntityManager.lilypads[posX, posZ] = null;
