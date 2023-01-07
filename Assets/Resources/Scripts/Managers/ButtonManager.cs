@@ -4,16 +4,22 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
-public class ButtonManager : MonoBehaviour
-{
+public class ButtonManager : MonoBehaviour{
+
+    public static string currentLevel = "";
+
     public void startGame(){
-        switch(EventSystem.current.currentSelectedGameObject.name.ToString()){
+        currentLevel = EventSystem.current.currentSelectedGameObject.name.ToString();
+        Debug.Log(currentLevel);
+        restartGame();
+    }
+    public void restartGame(){
+        Debug.Log(currentLevel);
+        switch(currentLevel){
             case "1":
-                Debug.Log(EventSystem.current.currentSelectedGameObject.name.ToString());
                 LevelManager.loadLevel(Levels.l1);
             break;
             case "2":
-                Debug.Log(EventSystem.current.currentSelectedGameObject.name.ToString());
                 LevelManager.loadLevel(Levels.l2);
             break;
             case "3":
@@ -26,7 +32,6 @@ public class ButtonManager : MonoBehaviour
                 LevelManager.loadLevel(Levels.l5);
             break;
             case "6":
-                Debug.Log(EventSystem.current.currentSelectedGameObject.name.ToString());
                 LevelManager.loadLevel(Levels.l6);
             break;
             case "7":
@@ -39,7 +44,6 @@ public class ButtonManager : MonoBehaviour
                 LevelManager.loadLevel(Levels.l9);
             break;
             case "10":
-                Debug.Log(EventSystem.current.currentSelectedGameObject.name.ToString());
                 LevelManager.loadLevel(Levels.l10);
             break;
             case "11":
