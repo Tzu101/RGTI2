@@ -6,15 +6,15 @@ using UnityEngine.EventSystems;
 
 public class ButtonManager : MonoBehaviour{
 
-    public static string currentLevel = "";
+    public static string currentLevel = "1";
 
     public void startGame(){
         currentLevel = EventSystem.current.currentSelectedGameObject.name.ToString();
-        Debug.Log(currentLevel);
+        //Debug.Log(currentLevel);
         restartGame();
     }
     public void restartGame(){
-        Debug.Log(currentLevel);
+        //Debug.Log(currentLevel);
         switch(currentLevel){
             case "1":
                 LevelManager.loadLevel(Levels.l1);
