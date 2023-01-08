@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class AudioManager : MonoBehaviour {
 
@@ -14,8 +16,15 @@ public class AudioManager : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        this.flySource.loop = true;
-        this.musicSource.loop = true;
+        Debug.Log(SceneManager.GetActiveScene().name.ToString());
+        if(SceneManager.GetActiveScene().name.ToString() == "Game Over" || SceneManager.GetActiveScene().name.ToString() == "Winner"){
+            this.flySource.Stop();
+            this.musicSource.Stop();
+        }
+        else{
+            this.flySource.loop = true;
+            this.musicSource.loop = true;           
+        }
     }
 
     public void playCrunch() {

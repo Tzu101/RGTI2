@@ -7,8 +7,8 @@ public class Firefly : MonoBehaviour {
     public int gridPositionX;
     public int gridPositionZ;
 
-    private static float eatenTime = 1.25f;
-    private float eatenTimer = 0f;
+    //private static float eatenTime = 1.25f;
+    //private float eatenTimer = 0f;
     
     // Start is called before the first frame update
     void Start() {
