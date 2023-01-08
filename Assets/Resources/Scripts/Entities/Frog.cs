@@ -128,8 +128,7 @@ public class Frog : MonoBehaviour {
         if (this.hasMissed) {
 
             if (this.missTimer > Frog.missTime) {
-                // Restart
-                LevelManager.reloadLevel();
+                die();
             } else {
                 this.missTimer += Time.deltaTime;
 
@@ -147,8 +146,7 @@ public class Frog : MonoBehaviour {
         if (this.isStung) {
 
             if (this.stungTimer > Frog.stungTime) {
-                // Restart
-                LevelManager.reloadLevel();
+                die();
             } else {
                 this.stungTimer += Time.deltaTime;
 
@@ -166,6 +164,10 @@ public class Frog : MonoBehaviour {
                 this.transform.position += new Vector3(jumpDist * this.jumpDirectionX, jumpDist * this.jumpDirectionY, jumpDist * this.jumpDirectionZ);
             }
         }
+    }
+
+    void die(){
+        SceneManager.LoadScene("Game Over");        
     }
 
     void handleInput() {

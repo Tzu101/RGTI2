@@ -90,7 +90,7 @@ public class EntityManager : MonoBehaviour {
            Level.completed[LevelManager.currentLevel.id] = '1';
            Level.updateCompleted();
            LevelManager.currentLevel = null;
-           SceneManager.LoadScene("Title");
+           SceneManager.LoadScene("Winner");
         }
         if (EntityManager.fireflies[posX, posZ]) {
             Object.Destroy(EntityManager.fireflies[posX, posZ]);
