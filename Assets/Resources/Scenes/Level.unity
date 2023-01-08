@@ -698,7 +698,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf049f5d757144a419bbf5004978c2f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: 
 --- !u!1001 &675152591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -710,9 +709,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water
       objectReference: {fileID: 0}
+    - target: {fileID: 7175653681788246796, guid: a0ab1e4147c48d84fb8a92a4985ff394, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7175653681788246797, guid: a0ab1e4147c48d84fb8a92a4985ff394, type: 3}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175653681788246797, guid: a0ab1e4147c48d84fb8a92a4985ff394, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175653681788246797, guid: a0ab1e4147c48d84fb8a92a4985ff394, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175653681788246797, guid: a0ab1e4147c48d84fb8a92a4985ff394, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7175653681788246797, guid: a0ab1e4147c48d84fb8a92a4985ff394, type: 3}
       propertyPath: m_LocalPosition.x
@@ -720,7 +735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7175653681788246797, guid: a0ab1e4147c48d84fb8a92a4985ff394, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 7175653681788246797, guid: a0ab1e4147c48d84fb8a92a4985ff394, type: 3}
       propertyPath: m_LocalPosition.z

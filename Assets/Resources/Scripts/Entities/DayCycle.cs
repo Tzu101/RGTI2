@@ -19,7 +19,7 @@ public class DayCycle : MonoBehaviour {
         this.totalTime += Time.deltaTime;
 
         this.sun.transform.position = new Vector3(Mathf.Sin(this.totalTime / 10) * 100, Mathf.Cos(this.totalTime / 10) * 100, 0);
-        this.sun.color = new Color(1, 0.5f + this.sun.transform.position.y / 300, 0);
+        this.sun.color = new Color(0.5f + this.sun.transform.position.y / 300, 0.5f + this.sun.transform.position.y / 300, 0);
         this.sun.intensity = Mathf.Max(0.2f, this.sun.transform.position.y / 100);
         this.sun.transform.LookAt(Vector3.zero, Vector3.up);
 

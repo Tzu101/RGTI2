@@ -76,8 +76,8 @@ public class EntityManager : MonoBehaviour {
 
         for (int i = 0; i < World.width*World.height; i++) {
 
-            int posX = Random.Range(-World.width / 2 - 3, World.width + World.width / 2 + 3);
-            int posZ = Random.Range(-World.height / 2 - 3, World.height + World.height / 2 + 3);
+            int posX = Random.Range(-World.width / 2 - 1, World.width + World.width / 2 + 1);
+            int posZ = Random.Range(-World.height / 2 - 1, World.height + World.height / 2 + 1);
 
             if ((posX < -1 || posX > World.width) && (posZ < -1 || posZ > World.height)) {
                 Instantiate(EntityManager.lilypadFlower, new Vector3(posX, 0, posZ) * World.gridToUnit, Quaternion.identity);
